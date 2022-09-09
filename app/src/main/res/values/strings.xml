@@ -1,0 +1,17 @@
+<resources>
+    <string name="app_name">AssignmentOne</string>
+    <string name="add_food_entry">Add a food entry</string>
+    <string name="cancel">Cancel</string>
+    <string name="food_count">Food Count</string>
+    <string name="food_description">Food description</string>
+    <string name="food_location">Food location</string>
+    <string name="enter_food_description">Enter food description</string>
+    <string name="save">Save</string>
+    <string name="unit_cost">Unit cost</string>
+    <string name="zero">0</string>
+    <string-array name="food_location">
+        <item>freezer</item>
+        <item>fridge</item>
+        <item>pantry</item>
+    </string-array>
+</resources>
