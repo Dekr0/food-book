@@ -58,9 +58,9 @@ public class DisplayFoodsList extends AppCompatActivity implements View.OnClickL
         if (result.getResultCode() == AddFoodEntry.correctResultCode) {
             Intent intent = result.getData();
             if (intent != null) {
-                String count = intent.getStringExtra(AddFoodEntry.resultNameCount);
-                String description = intent.getStringExtra(AddFoodEntry.resultNameDescription);
-                String unitCost = intent.getStringExtra(AddFoodEntry.resultNameUnitCost);
+                String count = intent.getStringExtra(AddFoodEntry.countResult);
+                String description = intent.getStringExtra(AddFoodEntry.descriptionResult);
+                String unitCost = intent.getStringExtra(AddFoodEntry.unitCostResult);
 
             }
         }
