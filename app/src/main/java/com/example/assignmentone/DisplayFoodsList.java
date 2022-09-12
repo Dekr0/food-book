@@ -1,6 +1,5 @@
 package com.example.assignmentone;
 
-
 import androidx.activity.result.ActivityResult;
 import androidx.activity.result.ActivityResultCallback;
 import androidx.activity.result.ActivityResultLauncher;
@@ -18,13 +17,13 @@ import java.util.ArrayList;
 public class DisplayFoodsList extends AppCompatActivity implements View.OnClickListener,
         ActivityResultCallback<ActivityResult> {
 
-    ActivityResultLauncher<Intent> addFoodEntryLauncher;
+    private ActivityResultLauncher<Intent> addFoodEntryLauncher;
 
-    Button addFoodEntryButton;
-    Button editFoodEntryButton;
-    Button deleteFoodEntryButton;
+    private Button addFoodEntryButton;
+    private Button editFoodEntryButton;
+    private Button deleteFoodEntryButton;
 
-    final ArrayList<Food> foodsList = new ArrayList<>();
+    private final ArrayList<Food> foodsList = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,7 +31,8 @@ public class DisplayFoodsList extends AppCompatActivity implements View.OnClickL
         setContentView(R.layout.activity_display_foods_list);
 
         // Initialization of necessary objects (View, Activity Result API)
-         addFoodEntryLauncher = registerForActivityResult(
+        // Reference: https://developer.android.com/training/basics/intents/result
+        addFoodEntryLauncher = registerForActivityResult(
                 new ActivityResultContracts.StartActivityForResult(), this);
         addFoodEntryButton = findViewById(R.id.addFoodEntryButton);
 

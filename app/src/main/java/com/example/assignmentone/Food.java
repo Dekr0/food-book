@@ -5,11 +5,11 @@ import java.util.Objects;
 
 public class Food {
 
-    public Date bestBeforeDate;
-    public int count;
-    public int unitCost;
-    public String description;
-    public String location;
+   private Date bestBeforeDate;
+   private int count;
+   private int unitCost;
+   private String description;
+   private String location;
 
     public Food(Date bestBeforeDate, int count, int unitCost, String description,
                 String location) {
@@ -20,8 +20,43 @@ public class Food {
         this.location = location;
     }
 
-    @Override
-    public int hashCode() {
-        return Objects.hash(description);
+    public void setBestBeforeDate(Date bestBeforeDate) {
+        this.bestBeforeDate = bestBeforeDate;
+    }
+
+    public void setCount(int count) {
+        this.count = count;
+    }
+
+    public void setUnitCost(int unitCost) {
+        this.unitCost = unitCost;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public void setLocation(String location) {
+        this.location = location;
+    }
+
+    public Date getBestBeforeDate() {
+        return bestBeforeDate;
+    }
+
+    public int getCount() {
+        return count;
+    }
+
+    public int getUnitCost() {
+        return unitCost;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public String getLocation() {
+        return location;
     }
 }

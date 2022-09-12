@@ -1,18 +1,14 @@
 package com.example.assignmentone;
 
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.DialogFragment;
+import androidx.lifecycle.ViewModelProvider;
 
-import android.app.DatePickerDialog;
-import android.app.Dialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
-import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.Spinner;
 
@@ -29,40 +25,15 @@ public class AddFoodEntry extends AppCompatActivity implements View.OnClickListe
     final static public String locationResult = "location";
     final static public String unitCostResult = "unitCost";
 
-    public static class DatePickerFragment extends DialogFragment
-        implements DatePickerDialog.OnDateSetListener {
+    private Button cancelButton;
+    private Button pickBestBeforeDateButton;
+    private Button saveFoodEntryButton;
+    private EditText foodCountField;
+    private EditText foodDescriptionField;
+    private EditText foodUnitCostField;
+    private Spinner foodLocationSpinner;
 
-        @NonNull
-        @Override
-        public Dialog onCreateDialog(@Nullable Bundle savedInstanceState) {
-            final Calendar c = Calendar.getInstance();
-            int year = c.get(Calendar.YEAR);
-            int month = c.get(Calendar.MONTH);
-            int day = c.get(Calendar.DAY_OF_MONTH);
-
-            DatePickerDialog datePickerDialog = new DatePickerDialog(requireContext(),
-                    this, year, month, day);
-
-            datePickerDialog.getDatePicker().setMinDate(c.getTimeInMillis());
-
-            return datePickerDialog;
-        }
-
-        @Override
-        public void onDateSet(DatePicker datePicker, int i, int i1, int i2) {
-
-        }
-    }
-
-    Button cancelButton;
-    Button pickBestBeforeDateButton;
-    Button saveFoodEntryButton;
-    EditText foodCountField;
-    EditText foodDescriptionField;
-    EditText foodUnitCostField;
-    Spinner foodLocationSpinner;
-
-    ArrayAdapter<CharSequence> adapter;
+    private ItemViewModel viewModel;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -78,12 +49,17 @@ public class AddFoodEntry extends AppCompatActivity implements View.OnClickListe
         foodUnitCostField = findViewById(R.id.foodUnitCostField);
         foodLocationSpinner = findViewById(R.id.foodLocationSpinner);
 
-        adapter = ArrayAdapter.createFromResource(this, R.array.food_location,
-                android.R.layout.simple_spinner_item);
+        viewModel = new ViewModelProvider(this).get(ItemViewModel.class);
+
+        // Reference: https://developer.android.com/develop/ui/views/components/spinner
+        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,
+                R.array.food_location, android.R.layout.simple_spinner_item);
 
         saveFoodEntryButton.setOnClickListener(this);
         cancelButton.setOnClickListener(this);
+
         pickBestBeforeDateButton.setOnClickListener(this);
+        pickBestBeforeDateButton.setText(DatePickerFragment.formatDate(Calendar.getInstance()));
 
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         foodLocationSpinner.setAdapter(adapter);
@@ -96,23 +72,31 @@ public class AddFoodEntry extends AppCompatActivity implements View.OnClickListe
         if (viewId == saveFoodEntryButton.getId()) {
             // Create new binding for Activity AddFoodEntry and DisplayFoodList
             // For return information of a food entry
-            Intent intent = new Intent();
+            Intent activityIntent = new Intent();
 
             // create name for each type of result and set its values
-            intent.putExtra(countResult, foodCountField.getText().toString());
-            intent.putExtra(descriptionResult, foodDescriptionField.getText().toString());
-            intent.putExtra(locationResult, foodLocationSpinner.getSelectedItemId());
-            intent.putExtra(unitCostResult, foodUnitCostField.getText().toString());
+            activityIntent.putExtra(countResult, foodCountField.getText().toString());
+            activityIntent.putExtra(descriptionResult, foodDescriptionField.getText().toString());
+            activityIntent.putExtra(locationResult, foodLocationSpinner.getSelectedItemId());
+            activityIntent.putExtra(unitCostResult, foodUnitCostField.getText().toString());
 
-            setResult(correctResultCode, intent);
+            setResult(correctResultCode, activityIntent);
 
             // destroy this activity
             finish();
         } else if (viewId == pickBestBeforeDateButton.getId()) {
             DialogFragment fragment = new DatePickerFragment();
+
             fragment.show(getSupportFragmentManager(), "datePicker");
+
+            viewModel.getSelectedString().observe(this, item -> {
+                System.out.println(item.toString());
+                System.out.println("Finish");
+            });
         } else if (viewId == cancelButton.getId()) {
             setResult(cancelCode, null);
         }
     }
+
 }
+

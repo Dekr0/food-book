@@ -6,165 +6,113 @@
     android:layout_height="match_parent"
     tools:context=".AddFoodEntry">
 
-    <EditText
-        android:id="@+id/foodDescriptionField"
+    <LinearLayout
+        android:id="@+id/linearLayout"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="16dp"
-        android:ems="10"
-        android:importantForAutofill="no"
-        android:inputType="textPersonName"
-        android:maxLength="30"
-        android:minHeight="48dp"
-        android:selectAllOnFocus="true"
-        android:text="@string/food_description_placeholder"
+        android:orientation="vertical"
+        android:padding="10dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="@+id/verticalSeparator"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
-    <TextView
-        android:id="@+id/foodDescriptionLabel"
-        android:layout_width="wrap_content"
+        <EditText
+            android:id="@+id/foodDescriptionField"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:ems="10"
+            android:hint="@string/food_description_hint"
+            android:importantForAutofill="no"
+            android:inputType="text"
+            android:maxLength="30"
+            android:minHeight="48dp"
+            android:selectAllOnFocus="true"
+            android:textColorHint="#757575" />
+
+        <TextView
+            android:id="@+id/foodCountLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:text="@string/food_count_text_view" />
+
+        <EditText
+            android:id="@+id/foodCountField"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:ems="10"
+            android:hint="@string/number_field_hint"
+            android:importantForAutofill="no"
+            android:inputType="number"
+            android:minHeight="48dp"
+            android:selectAllOnFocus="true" />
+
+        <TextView
+            android:id="@+id/foodUnitCostLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:text="@string/unit_cost_text_view" />
+
+        <EditText
+            android:id="@+id/foodUnitCostField"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:ems="10"
+            android:hint="@string/number_field_hint"
+            android:importantForAutofill="no"
+            android:inputType="number"
+            android:minHeight="48dp"
+            android:selectAllOnFocus="true" />
+
+        <TextView
+            android:id="@+id/foodLocationSpinnerLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:text="@string/food_location_text_view" />
+
+        <Spinner
+            android:id="@+id/foodLocationSpinner"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:minHeight="50dp" />
+
+        <Button
+            android:id="@+id/pickBestBeforeDateButton"
+            style="@style/Widget.MaterialComponents.Button.TextButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/pick_best_before_date_button_name"
+            android:textAppearance="@style/TextAppearance.AppCompat.Small"
+             />
+
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/cancelButton"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginEnd="16dp"
-        android:text="@string/food_description_text_view"
-        app:layout_constraintBaseline_toBaselineOf="@+id/foodDescriptionField"
-        app:layout_constraintEnd_toStartOf="@+id/verticalSeparator"
+        android:layout_margin="10dp"
+        android:text="@string/cancel_button_name"
+        app:layout_constraintBaseline_toBaselineOf="@+id/saveFoodEntryButton"
+        app:layout_constraintEnd_toStartOf="@+id/saveFoodEntryButton"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent" />
 
     <Button
         android:id="@+id/saveFoodEntryButton"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginEnd="16dp"
-        android:layout_marginBottom="16dp"
+        android:layout_margin="10dp"
         android:text="@string/save_button_name"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/cancelButton" />
-
-    <Button
-        android:id="@+id/cancelButton"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginEnd="16dp"
-        android:layout_marginBottom="16dp"
-        android:text="@string/cancel_button_name"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/saveFoodEntryButton"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent" />
-
-    <TextView
-        android:id="@+id/foodCountLabel"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:text="@string/food_count_text_view"
-        app:layout_constraintBaseline_toBaselineOf="@+id/foodCountField"
-        app:layout_constraintStart_toStartOf="parent" />
-
-    <EditText
-        android:id="@+id/foodCountField"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="16dp"
-        android:ems="10"
-        android:importantForAutofill="no"
-        android:inputType="number"
-        android:minHeight="48dp"
-        android:selectAllOnFocus="true"
-        android:text="@string/number_field_placeholder"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="@+id/verticalSeparator"
-        app:layout_constraintTop_toBottomOf="@+id/foodDescriptionField" />
-
-    <TextView
-        android:id="@+id/foodUnitCostLabel"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginEnd="16dp"
-        android:text="@string/unit_cost_text_view"
-        app:layout_constraintBaseline_toBaselineOf="@+id/foodUnitCostField"
-        app:layout_constraintEnd_toStartOf="@+id/verticalSeparator"
-        app:layout_constraintStart_toStartOf="parent" />
-
-    <EditText
-        android:id="@+id/foodUnitCostField"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="16dp"
-        android:layout_marginBottom="16dp"
-        android:ems="10"
-        android:importantForAutofill="no"
-        android:inputType="number"
-        android:minHeight="48dp"
-        android:selectAllOnFocus="true"
-        android:text="@string/number_field_placeholder"
-        app:layout_constraintBottom_toTopOf="@+id/InputTypeSeparator"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="@+id/verticalSeparator"
-        app:layout_constraintTop_toBottomOf="@+id/foodCountField" />
-
-    <Spinner
-        android:id="@+id/foodLocationSpinner"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="16dp"
-        android:minHeight="48dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="@+id/verticalSeparator"
-        app:layout_constraintTop_toTopOf="@+id/InputTypeSeparator" />
-
-    <TextView
-        android:id="@+id/foodLocationSpinnerLabel"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
-        android:text="@string/food_location_text_view"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/InputTypeSeparator" />
-
-    <Button
-        android:id="@+id/pickBestBeforeDateButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/pick_best_before_date_button_name"
-        tools:layout_editor_absoluteX="3dp"
-        tools:layout_editor_absoluteY="375dp" />
-
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/InputTypeSeparator"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        app:layout_constraintGuide_begin="209dp" />
-
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/verticalSeparator"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        app:layout_constraintGuide_begin="206dp" />
-
-    <EditText
-        android:id="@+id/editTextDate"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:inputType="date"
-        app:layout_constraintEnd_toEndOf="parent"
-        tools:layout_editor_absoluteY="305dp" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
