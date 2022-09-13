@@ -55,13 +55,12 @@ public class DisplayFoodsList extends AppCompatActivity implements View.OnClickL
 
     @Override
     public void onActivityResult(ActivityResult result) {
-        if (result.getResultCode() == AddFoodEntry.correctResultCode) {
+        if (result.getResultCode() == AddFoodEntry.CORRECT_RESULT_CODE) {
             Intent intent = result.getData();
             if (intent != null) {
-                String count = intent.getStringExtra(AddFoodEntry.countResult);
-                String description = intent.getStringExtra(AddFoodEntry.descriptionResult);
-                String unitCost = intent.getStringExtra(AddFoodEntry.unitCostResult);
-
+                String count = intent.getStringExtra(AddFoodEntry.COUNT_RESULT);
+                String description = intent.getStringExtra(AddFoodEntry.DESCRIPTION_RESULT);
+                String unitCost = intent.getStringExtra(AddFoodEntry.UNIT_COST_RESULT);
             }
         }
     }

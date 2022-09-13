@@ -2,7 +2,6 @@ package com.example.assignmentone;
 
 import android.app.DatePickerDialog;
 import android.app.Dialog;
-import android.content.ClipData;
 import android.os.Bundle;
 import android.widget.DatePicker;
 
@@ -20,7 +19,9 @@ import java.util.Locale;
 public class DatePickerFragment extends DialogFragment
         implements DatePickerDialog.OnDateSetListener {
 
-    final static private Calendar c = Calendar.getInstance();
+    // Note: everytime the instance of this fragment is closed, that instance
+    // is destroyed / at the end of lifecycle
+    private Calendar bestBeforeDate;
     final static private SimpleDateFormat formatter = new SimpleDateFormat(
             "yyyy-MM-dd", Locale.CANADA
     );
@@ -30,9 +31,14 @@ public class DatePickerFragment extends DialogFragment
     @NonNull
     @Override
     public Dialog onCreateDialog(@Nullable Bundle savedInstanceState) {
-        int year = c.get(Calendar.YEAR);
-        int month = c.get(Calendar.MONTH);
-        int day = c.get(Calendar.DAY_OF_MONTH);
+        final Calendar c = Calendar.getInstance();
+
+        int year = bestBeforeDate == null ? c.get(Calendar.YEAR) :
+                bestBeforeDate.get(Calendar.YEAR);
+        int month = bestBeforeDate == null ? c.get(Calendar.MONTH) :
+                bestBeforeDate.get(Calendar.MONTH);
+        int day = bestBeforeDate == null ? c.get(Calendar.DAY_OF_MONTH) :
+                bestBeforeDate.get(Calendar.DAY_OF_MONTH);
 
         DatePickerDialog datePickerDialog = new DatePickerDialog(requireContext(),
                 this, year, month, day);
@@ -46,8 +52,12 @@ public class DatePickerFragment extends DialogFragment
 
     @Override
     public void onDateSet(DatePicker datePicker, int i, int i1, int i2) {
-        c.set(i, i1, i2);
-        viewModel.selectString(formatDate(c));
+        if (bestBeforeDate == null) {
+            bestBeforeDate = Calendar.getInstance();
+        }
+
+        bestBeforeDate.set(i, i1, i2);
+        viewModel.selectString(formatDate(bestBeforeDate));
     }
 
     public static String formatDate(Calendar c) {
