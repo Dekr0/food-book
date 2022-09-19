@@ -4,10 +4,10 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".AddFoodEntry">
+    tools:context=".AddFoodActivity">
 
     <LinearLayout
-        android:id="@+id/linearLayout"
+        android:id="@+id/linear_layout"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:orientation="vertical"
@@ -17,7 +17,7 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <EditText
-            android:id="@+id/foodDescriptionField"
+            android:id="@+id/description_edit"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="10dp"
@@ -31,14 +31,14 @@
             android:textColorHint="#757575" />
 
         <TextView
-            android:id="@+id/foodCountLabel"
+            android:id="@+id/count_text_view"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginBottom="10dp"
-            android:text="@string/food_count_text_view" />
+            android:text="@string/food_count" />
 
         <EditText
-            android:id="@+id/foodCountField"
+            android:id="@+id/count_edit"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginBottom="10dp"
@@ -50,14 +50,14 @@
             android:selectAllOnFocus="true" />
 
         <TextView
-            android:id="@+id/foodUnitCostLabel"
+            android:id="@+id/unit_cost_text_view"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginBottom="10dp"
-            android:text="@string/unit_cost_text_view" />
+            android:text="@string/unit_cost" />
 
         <EditText
-            android:id="@+id/foodUnitCostField"
+            android:id="@+id/unit_cost_edit"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginBottom="10dp"
@@ -69,50 +69,50 @@
             android:selectAllOnFocus="true" />
 
         <TextView
-            android:id="@+id/foodLocationSpinnerLabel"
+            android:id="@+id/spinner_text_view"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginBottom="10dp"
-            android:text="@string/food_location_text_view" />
+            android:text="@string/food_location" />
 
         <Spinner
-            android:id="@+id/foodLocationSpinner"
+            android:id="@+id/spinner"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginBottom="10dp"
             android:minHeight="50dp" />
 
         <Button
-            android:id="@+id/pickBestBeforeDateButton"
+            android:id="@+id/pick_date_btn"
             style="@style/Widget.MaterialComponents.Button.TextButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/pick_best_before_date_button_name"
+            android:text="@string/best_before_date"
             android:textAppearance="@style/TextAppearance.AppCompat.Small"
              />
 
     </LinearLayout>
 
     <Button
-        android:id="@+id/cancelButton"
+        android:id="@+id/cancel_btn"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_margin="10dp"
-        android:text="@string/cancel_button_name"
-        app:layout_constraintBaseline_toBaselineOf="@+id/saveFoodEntryButton"
-        app:layout_constraintEnd_toStartOf="@+id/saveFoodEntryButton"
+        android:text="@string/cancel"
+        app:layout_constraintBaseline_toBaselineOf="@+id/save_btn"
+        app:layout_constraintEnd_toStartOf="@+id/save_btn"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent" />
 
     <Button
-        android:id="@+id/saveFoodEntryButton"
+        android:id="@+id/save_btn"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_margin="10dp"
-        android:text="@string/save_button_name"
+        android:text="@string/save"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/cancelButton" />
+        app:layout_constraintStart_toEndOf="@+id/cancel_btn" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

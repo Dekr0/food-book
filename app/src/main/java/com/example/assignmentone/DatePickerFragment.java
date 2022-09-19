@@ -47,7 +47,7 @@ public class DatePickerFragment extends DialogFragment
 
         Bundle result = new Bundle();
 
-        result.putString(FRAGMENT_BUNDLE_KEY, Util.formatDate(c.getTime()));
+        result.putString(FRAGMENT_BUNDLE_KEY, FoodFormatter.formatDate(c.getTime()));
         getParentFragmentManager().setFragmentResult(FRAGMENT_REQUEST_KEY, result);
     }
 }

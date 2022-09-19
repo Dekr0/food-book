@@ -1,20 +1,22 @@
 package com.example.assignmentone;
 
-import android.os.Parcel;
-import android.os.Parcelable;
-
 import androidx.annotation.NonNull;
 
+import java.util.Calendar;
 import java.util.Date;
-import java.util.Objects;
+
 
 public class Food {
 
-   Date bestBeforeDate;
-   int count;
-   int unitCost;
-   String description;
-   String location;
+  private Date bestBeforeDate;
+  private int count = 0;
+  private int unitCost = 0;
+  private String description = "";
+  private String location = "";
+
+   public Food() {
+       bestBeforeDate = Calendar.getInstance().getTime();
+   }
 
     public Food(Date bestBeforeDate, int count, int unitCost, String description,
                 String location) {
@@ -28,16 +30,14 @@ public class Food {
     @NonNull
     @Override
     public String toString() {
-        return description;
+       return description + ", location: " + location + ", unit count: " + count +
+               ", unit cost: " + unitCost + ", best before date: " +
+               getBestBeforeDate();
+
     }
 
     public String getBestBeforeDate() {
-        return Util.formatDate(bestBeforeDate);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(bestBeforeDate, count, unitCost, description, location);
+        return FoodFormatter.formatDate(bestBeforeDate);
     }
 
     public int getCount() {

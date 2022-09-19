@@ -14,15 +14,15 @@
         android:theme="@style/Theme.AssignmentOne"
         tools:targetApi="31">
         <activity
-            android:name=".AddFoodEntry"
-            android:parentActivityName=".DisplayFoodsList"
+            android:name=".AddFoodActivity"
+            android:parentActivityName=".MainActivity"
             android:exported="false">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value=".DisplayFoodsList" />
+                android:value=".MainActivity" />
         </activity>
         <activity
-            android:name=".DisplayFoodsList"
+            android:name=".MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
