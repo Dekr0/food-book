@@ -1,5 +1,6 @@
 package com.example.assignmentone;
 
+import android.app.AlertDialog;
 import android.app.DatePickerDialog;
 import android.app.Dialog;
 import android.os.Bundle;
@@ -18,21 +19,26 @@ public class DatePickerFragment extends DialogFragment
 
     final static public String FRAGMENT_REQUEST_KEY = "requestDate";
     final static public String FRAGMENT_BUNDLE_KEY = "bestBeforeDate";
+    final private Calendar c;
 
-    // Note: everytime the instance of this fragment is closed, that instance
-    // is destroyed / at the end of lifecycle
+    public DatePickerFragment() {
+        c = Calendar.getInstance();
+    }
+
+    public DatePickerFragment(Calendar c) {
+        this.c = c;
+    }
 
     @NonNull
     @Override
     public Dialog onCreateDialog(@Nullable Bundle savedInstanceState) {
-        final Calendar c = Calendar.getInstance();
 
         int year = c.get(Calendar.YEAR);
         int month = c.get(Calendar.MONTH);
         int day = c.get(Calendar.DAY_OF_MONTH);
 
         DatePickerDialog datePickerDialog = new DatePickerDialog(requireContext(),
-                this, year, month, day);
+                AlertDialog.THEME_HOLO_DARK, this, year, month, day);
 
         datePickerDialog.getDatePicker().setMinDate(c.getTimeInMillis());
 

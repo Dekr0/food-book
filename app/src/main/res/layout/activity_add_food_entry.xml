@@ -35,7 +35,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginBottom="10dp"
-            android:text="@string/food_count" />
+            android:text="@string/quantity" />
 
         <EditText
             android:id="@+id/count_edit"
@@ -95,10 +95,11 @@
 
     <Button
         android:id="@+id/cancel_btn"
+        android:backgroundTint="@color/error"
+        android:text="@string/cancel"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_margin="10dp"
-        android:text="@string/cancel"
         app:layout_constraintBaseline_toBaselineOf="@+id/save_btn"
         app:layout_constraintEnd_toStartOf="@+id/save_btn"
         app:layout_constraintHorizontal_bias="0.5"
@@ -106,6 +107,7 @@
 
     <Button
         android:id="@+id/save_btn"
+        android:backgroundTint="@color/safe"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_margin="10dp"

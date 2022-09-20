@@ -1,6 +1,5 @@
 package com.example.assignmentone;
 
-import android.util.Log;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.TextView;
@@ -11,23 +10,22 @@ public class FoodEntryViewHolder extends RecyclerView.ViewHolder implements
         View.OnClickListener {
 
     private final ImageButton deleteButton;
+    private final ImageButton editButton;
     private final TextView descriptionTextView;
     private final TextView countTextView;
     private final TextView unitCostTextView;
-    private final TextView locationTextView;
-    private final TextView dateTextView;
 
     RecyclerViewListener listener;
 
     @Override
     public void onClick(View view) {
         if (listener != null) {
-            int pos = getAdapterPosition();
+            int pos = getAbsoluteAdapterPosition();
 
             if (view.getId() == deleteButton.getId()) {
                 listener.onDeleteButtonClick(pos);
-            } else if (pos != RecyclerView.NO_POSITION) {
-                listener.onEntryClick(pos);
+            } else if (view.getId() == editButton.getId()) {
+                listener.onEditButtonClick(pos);
             }
         }
     }
@@ -38,13 +36,13 @@ public class FoodEntryViewHolder extends RecyclerView.ViewHolder implements
         this.listener = listener;
 
         deleteButton = view.findViewById(R.id.delete_food_btn);
+        editButton = view.findViewById(R.id.edit_food_btn);
         descriptionTextView = view.findViewById(R.id.entry_description_text_view);
         countTextView = view.findViewById(R.id.entry_count_text_view);
         unitCostTextView = view.findViewById(R.id.entry_unit_cost_text_view);
-        locationTextView = view.findViewById(R.id.entry_location_text_view);
-        dateTextView = view.findViewById(R.id.entry_date_text_view);
 
-        view.setOnClickListener(this);
+//        view.setOnClickListener(this);
+        editButton.setOnClickListener(this);
         deleteButton.setOnClickListener(this);
     }
 
@@ -58,13 +56,5 @@ public class FoodEntryViewHolder extends RecyclerView.ViewHolder implements
 
     public TextView getUnitCostTextView() {
         return unitCostTextView;
-    }
-
-    public TextView getLocationTextView() {
-        return locationTextView;
-    }
-
-    public TextView getDateTextView() {
-        return dateTextView;
     }
 }

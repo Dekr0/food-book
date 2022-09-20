@@ -3,11 +3,13 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="app/src/main/res/drawable/border.xml" value="0.296" />
+        <entry key="app/src/main/res/layout-v31/food_entry.xml" value="0.75" />
         <entry key="app/src/main/res/layout/activity_add_food_entry.xml" value="0.33" />
-        <entry key="app/src/main/res/layout/activity_display_foods_list.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/activity_display_foods_list.xml" value="0.33" />
         <entry key="app/src/main/res/layout/food_entry.xml" value="0.67" />
       </map>
     </option>
   </component>
-  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" project-jdk-name="11" project-jdk-type="JavaSDK" />
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="11" project-jdk-type="JavaSDK" />
 </project>
