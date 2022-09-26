@@ -1,4 +1,4 @@
-package com.example.assignmentone;
+package com.example.chengxuafoodbook;
 
 import android.app.AlertDialog;
 import android.app.DatePickerDialog;
@@ -13,7 +13,11 @@ import androidx.fragment.app.DialogFragment;
 import java.util.Calendar;
 
 
-// Reference: https://developer.android.com/develop/ui/views/components/pickers
+/**
+ * DatePickerFragment
+ *
+ * Reference: https://developer.android.com/develop/ui/views/components/pickers
+ */
 public class DatePickerFragment extends DialogFragment
         implements DatePickerDialog.OnDateSetListener {
 
@@ -21,6 +25,10 @@ public class DatePickerFragment extends DialogFragment
     final static public String FRAGMENT_BUNDLE_KEY = "bestBeforeDate";
     final private Calendar c;
 
+    /**
+     * Set the selected date in DatePickerFragment to today if no Calendar is
+     * provided
+     */
     public DatePickerFragment() {
         c = Calendar.getInstance();
     }
@@ -32,6 +40,7 @@ public class DatePickerFragment extends DialogFragment
     @NonNull
     @Override
     public Dialog onCreateDialog(@Nullable Bundle savedInstanceState) {
+        final Calendar today = Calendar.getInstance();
 
         int year = c.get(Calendar.YEAR);
         int month = c.get(Calendar.MONTH);
@@ -40,7 +49,7 @@ public class DatePickerFragment extends DialogFragment
         DatePickerDialog datePickerDialog = new DatePickerDialog(requireContext(),
                 AlertDialog.THEME_HOLO_DARK, this, year, month, day);
 
-        datePickerDialog.getDatePicker().setMinDate(c.getTimeInMillis());
+        datePickerDialog.getDatePicker().setMinDate(today.getTimeInMillis());
 
         return datePickerDialog;
     }
@@ -53,7 +62,7 @@ public class DatePickerFragment extends DialogFragment
 
         Bundle result = new Bundle();
 
-        result.putString(FRAGMENT_BUNDLE_KEY, FoodFormatter.formatDate(c.getTime()));
+        result.putString(FRAGMENT_BUNDLE_KEY, BundleUtility.formatDate(c.getTime()));
         getParentFragmentManager().setFragmentResult(FRAGMENT_REQUEST_KEY, result);
     }
 }

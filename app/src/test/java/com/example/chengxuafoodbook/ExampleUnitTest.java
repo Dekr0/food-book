@@ -1,4 +1,4 @@
-package com.example.assignmentone;
+package com.example.chengxuafoodbook;
 
 import org.junit.Test;
 

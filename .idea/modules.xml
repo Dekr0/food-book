@@ -2,11 +2,11 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/AssignmentOne.iml" filepath="$PROJECT_DIR$/.idea/modules/AssignmentOne.iml" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/AssignmentOne.app.iml" filepath="$PROJECT_DIR$/.idea/modules/app/AssignmentOne.app.iml" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/AssignmentOne.app.androidTest.iml" filepath="$PROJECT_DIR$/.idea/modules/app/AssignmentOne.app.androidTest.iml" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/AssignmentOne.app.main.iml" filepath="$PROJECT_DIR$/.idea/modules/app/AssignmentOne.app.main.iml" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/AssignmentOne.app.unitTest.iml" filepath="$PROJECT_DIR$/.idea/modules/app/AssignmentOne.app.unitTest.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/chengxua-FoodBook.iml" filepath="$PROJECT_DIR$/.idea/modules/chengxua-FoodBook.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/chengxua-FoodBook.app.iml" filepath="$PROJECT_DIR$/.idea/modules/app/chengxua-FoodBook.app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/chengxua-FoodBook.app.androidTest.iml" filepath="$PROJECT_DIR$/.idea/modules/app/chengxua-FoodBook.app.androidTest.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/chengxua-FoodBook.app.main.iml" filepath="$PROJECT_DIR$/.idea/modules/app/chengxua-FoodBook.app.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/chengxua-FoodBook.app.unitTest.iml" filepath="$PROJECT_DIR$/.idea/modules/app/chengxua-FoodBook.app.unitTest.iml" />
     </modules>
   </component>
 </project>

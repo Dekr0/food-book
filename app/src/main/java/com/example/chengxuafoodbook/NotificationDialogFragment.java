@@ -1,8 +1,7 @@
-package com.example.assignmentone;
+package com.example.chengxuafoodbook;
 
 import android.app.AlertDialog;
 import android.app.Dialog;
-import android.content.DialogInterface;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -10,6 +9,12 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.DialogFragment;
 
 
+/**
+ * NotificationDialogFragment
+ *
+ * A simply custom DialogFragment that display an alert dialog to display
+ * an error / warning message
+ */
 public class NotificationDialogFragment extends DialogFragment {
 
     private final String message;
@@ -24,11 +29,8 @@ public class NotificationDialogFragment extends DialogFragment {
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
 
         builder.setMessage(message)
-                .setPositiveButton(R.string.ok, new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialogInterface, int i) {
+                .setPositiveButton(R.string.ok, (dialogInterface, i) -> {
 
-                    }
                 });
 
         return builder.create();

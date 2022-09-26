@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    package="com.example.assignmentone">
+    package="com.example.chengxuafoodbook">
 
     <application
         android:allowBackup="true"
@@ -14,15 +14,15 @@
         android:theme="@style/Theme.AssignmentOne"
         tools:targetApi="31">
         <activity
-            android:name=".AddFoodActivity"
-            android:parentActivityName=".MainActivity"
+            android:name="com.example.chengxuafoodbook.AddFoodActivity"
+            android:parentActivityName="com.example.chengxuafoodbook.MainActivity"
             android:exported="false">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value=".MainActivity" />
+                android:value="com.example.chengxuafoodbook.MainActivity" />
         </activity>
         <activity
-            android:name=".MainActivity"
+            android:name="com.example.chengxuafoodbook.MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

@@ -1,4 +1,4 @@
-package com.example.assignmentone;
+package com.example.chengxuafoodbook;
 
 import android.view.View;
 import android.widget.ImageButton;
@@ -6,6 +6,13 @@ import android.widget.TextView;
 
 import androidx.recyclerview.widget.RecyclerView;
 
+
+/**
+ * FoodEntryViewHolder
+ *
+ * A custom ViewHolder class that defines the layout of each food entry in the
+ * RecyclerView.
+ */
 public class FoodEntryViewHolder extends RecyclerView.ViewHolder implements
         View.OnClickListener {
 
@@ -15,6 +22,8 @@ public class FoodEntryViewHolder extends RecyclerView.ViewHolder implements
     private final TextView countTextView;
     private final TextView unitCostTextView;
 
+    // A copy to of RecyclerViewListener instance so that in OnClick
+    // callback corresponding method from listener can be called
     RecyclerViewListener listener;
 
     @Override
@@ -41,7 +50,6 @@ public class FoodEntryViewHolder extends RecyclerView.ViewHolder implements
         countTextView = view.findViewById(R.id.entry_count_text_view);
         unitCostTextView = view.findViewById(R.id.entry_unit_cost_text_view);
 
-//        view.setOnClickListener(this);
         editButton.setOnClickListener(this);
         deleteButton.setOnClickListener(this);
     }

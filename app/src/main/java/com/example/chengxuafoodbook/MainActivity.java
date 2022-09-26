@@ -1,4 +1,4 @@
-package com.example.assignmentone;
+package com.example.chengxuafoodbook;
 
 import androidx.activity.result.ActivityResult;
 import androidx.activity.result.ActivityResultCallback;
@@ -21,6 +21,7 @@ import java.util.Locale;
 public class MainActivity extends AppCompatActivity implements View.OnClickListener,
         RecyclerViewListener, ActivityResultCallback<ActivityResult> {
 
+    // For starting an new activity to wait for users input data
     private ActivityResultLauncher<Intent> launcher;
 
     private Button addFoodButton;
@@ -36,16 +37,16 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             Intent intent = result.getData();
 
             if (intent != null) {
-                Bundle bundle = intent.getBundleExtra(FoodFormatter.BUNDLE_KEY);
+                Bundle bundle = intent.getBundleExtra(BundleUtility.BUNDLE_KEY);
 
                 if (bundle != null) {
-                    int position = bundle.getInt(FoodFormatter.POSITION_KEY);
+                    int position = bundle.getInt(BundleUtility.POSITION_KEY);
 
                     if (position == foodList.size()) {
-                        foodList.add(FoodFormatter.unpackBundle(bundle));
+                        foodList.add(BundleUtility.unpackBundle(bundle));
                         adapter.notifyItemInserted(position);
                     } else {
-                        FoodFormatter.unpackBundle(bundle, foodList.get(position));
+                        BundleUtility.unpackBundle(bundle, foodList.get(position));
                         adapter.notifyItemChanged(position);
                     }
                 }
@@ -62,28 +63,43 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         final int viewId = view.getId();
 
         if (viewId == addFoodButton.getId()) {
-            // Create a new intent to bind Activity AddFoodActivity and Activity DisplayFoodList
-            // together
-
-            Bundle bundle = FoodFormatter.createBundle();
+            Bundle bundle = BundleUtility.createBundle();
             Intent intent = new Intent(this, AddFoodActivity.class);
 
-            bundle.putInt(FoodFormatter.POSITION_KEY, foodList.size());
-            intent.putExtra(FoodFormatter.BUNDLE_KEY, bundle);
+            bundle.putInt(BundleUtility.POSITION_KEY, foodList.size());
+            intent.putExtra(BundleUtility.BUNDLE_KEY, bundle);
 
-            // Launch Activity AddFoodActivity
             launcher.launch(intent);
         }
     }
-    
+
+    @Override
+    public void onDeleteButtonClick(int position) {
+        foodList.remove(position);
+
+        adapter.notifyItemRemoved(position);
+
+        assert adapter.getItemCount() == foodList.size();
+
+        updateTotalCost();
+    }
+
+    @Override
+    public void onEditButtonClick(int position) {
+        Bundle bundle = BundleUtility.createBundle(foodList.get(position));
+        Intent intent = new Intent(this, AddFoodActivity.class);
+
+        bundle.putInt(BundleUtility.POSITION_KEY, position);
+        intent.putExtra(BundleUtility.BUNDLE_KEY, bundle);
+
+        launcher.launch(intent);
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_display_foods_list);
 
-        test();
-        // Initialization of necessary objects (View, Activity Result API)
-        // Reference: https://developer.android.com/training/basics/intents/result
         launcher = registerForActivityResult(
                 new ActivityResultContracts.StartActivityForResult(), this);
 
@@ -100,28 +116,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         recyclerView.setAdapter(adapter);
 
         updateTotalCost();
-    }
-
-    @Override
-    public void onDeleteButtonClick(int position) {
-        foodList.remove(position);
-
-        adapter.notifyItemRemoved(position);
-
-        assert adapter.getItemCount() == foodList.size();
-
-        updateTotalCost();
-    }
-
-    @Override
-    public void onEditButtonClick(int position) {
-        Bundle bundle = FoodFormatter.createBundle(foodList.get(position));
-        Intent intent = new Intent(this, AddFoodActivity.class);
-
-        bundle.putInt(FoodFormatter.POSITION_KEY, position);
-        intent.putExtra(FoodFormatter.BUNDLE_KEY, bundle);
-
-        launcher.launch(intent);
     }
 
     @Override
@@ -144,24 +138,5 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         totalCostView.setText(String.format(Locale.CANADA, "Total cost: $%d",
                 totalCost));
-    }
-
-    private void test() {
-        Food tuna = new Food(FoodFormatter.getCalendar("2024-09-23").getTime(), 3, 1,
-                "canned light tuna", "pantry");
-        Food eggs = new Food(FoodFormatter.getCalendar("2022-09-30").getTime(), 1, 4,
-                "dozen eggs", "fridge");
-        Food broccoli = new Food(FoodFormatter.getCalendar("2024-09-23").getTime(), 3, 5,
-                "frozen broccoli", "freezer");
-        Food pepsi = new Food(FoodFormatter.getCalendar("2023-09-19").getTime(), 3, 3,
-                "pepsi", "fridge");
-        Food bread = new Food(FoodFormatter.getCalendar("2023-09-27").getTime(), 3, 4,
-                "bread", "pantry");
-
-        foodList.add(tuna);
-        foodList.add(eggs);
-        foodList.add(broccoli);
-        foodList.add(pepsi);
-        foodList.add(bread);
     }
 }
